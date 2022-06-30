@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: #000000;
+    font-size: 16px;
+    background-color: #FFFFFF;
+}
+
+a{
+    color: #000000;
+    text-decoration: none;
+}

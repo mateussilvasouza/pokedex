@@ -1,0 +1,42 @@
+body{
+    font-family: Karla, "Source Sans Pro", sans-serif;
+}
+/*Header Início*/
+header{
+    height: 100px;
+    background-color: #F5DB13;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cabecalho{
+    width: 1024px;
+
+    padding: 10px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cabecalho__logo{
+    width: 150px;
+}
+
+.cabecalho__nav ul{
+    list-style: none;
+    display: flex;
+}
+
+.cabecalho__nav li>a{
+    font-size: 1.5em;
+    padding-bottom: 5px;
+    margin-left: 60px;
+}
+
+.cabecalho__nav li>a:active{
+    border-bottom: 3px solid #000000;
+}

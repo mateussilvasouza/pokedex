@@ -1,9 +1,15 @@
 const url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
+const pokemon = [];
+async function getPokemon(){
+    await fetch(url)
+    .then((response) => response.json())
+    .then((response) => {
+        for(let i of response.results){
+            pokemon.push(i.name)
+        }
 
-function getPokemon(){
-    fetch(url)
-        .then((response) => response.json())
-        .then(response => console.log(response.results))
+        console.log(pokemon)
+    })
 }
 
-getPokemon()
+getPokemon();
