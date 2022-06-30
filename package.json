@@ -1,0 +1,20 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "versão 0.0",
+  "main": "Api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateussilvasouza/pokedex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateussilvasouza/pokedex/issues"
+  },
+  "homepage": "https://github.com/mateussilvasouza/pokedex#readme"
+}
