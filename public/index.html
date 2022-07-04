@@ -16,7 +16,7 @@
             <img src="../src/assets/Logo.png" alt="Logotipo de Pokémon" class="cabecalho__logo">
             <nav class="cabecalho__nav">
                 <ul>
-                    <li active ><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li><a href="#">Pokédex</a></li>
                     <li><a href="#">Legendaries</a></li>
                     <li><a href="#">Documentarion</a></li>
@@ -24,6 +24,48 @@
             </nav>
         </div>
     </header>
+
+    <main class="conteudo">
+        <section class="conteudo__search">
+            <p>All Pokemons for you chose your favorite</p>
+            <input id="search" class="search" type="search" placeholder="Encontre seu Pokemon" />
+            <div class="search__filter">
+                <button id="type">Tipo</button>
+                <button id="attack">Ataques</button>
+                <button id="experience">Experiência</button>
+            </div>
+        </section>
+        <section class="conteudo__results">
+            <div class="card">
+                <div class="card__info">
+                    <p class="info__name"></p>
+                    <div class="info__stats">
+                        <div>
+                            <div class="stats"></div>
+                            <p class="stats__text">Attack</p>
+                        </div>
+                        <div>
+                            <div class="stats"></div>
+                            <p class="stats__text">Defense</p>
+                        </div>
+                    </div>
+                    <div class="card__types">
+                        <p>type</p>
+                        <p>type</p>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Make with <span class="heart__icon">❤</span> for the PokéSpartans team Platzi Master</p>
+        <p>Ours Team</p>
+    </footer>
+
 
 
 

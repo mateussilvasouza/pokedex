@@ -13,8 +13,8 @@ header{
 }
 
 .cabecalho{
-    width: 1024px;
-
+    width: 100%;
+    max-width: 1024px;
     padding: 10px 0;
     margin: 0 auto;
     display: flex;
@@ -40,3 +40,36 @@ header{
 .cabecalho__nav li>a:active{
     border-bottom: 3px solid #000000;
 }
+/*Header Fim*/
+
+/*Main Início*/
+.conteudo{
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/*Main Fim*/
+/*Footer Início*/
+footer{
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+.heart__icon{
+    color: #ff0000;
+}
+
+/*Footer Fim*/
