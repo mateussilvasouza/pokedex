@@ -14,7 +14,7 @@ header{
 
 .cabecalho{
     width: 100%;
-    max-width: 1024px;
+    max-width: 1200px;
     padding: 10px 0;
     margin: 0 auto;
     display: flex;
@@ -45,13 +45,117 @@ header{
 /*Main Início*/
 .conteudo{
     width: 100%;
-    max-width: 1024px;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.conteudo__search > * {
+    margin-bottom: 20px;
+}
+.conteudo__search{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 50px;
+}
+.conteudo__search span{
+    font-weight: bold;
+}
+
+.conteudo__search input{
+    text-indent: 50px;
+    width: 100vh;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #F2F2F2;
+    border: none;
+    box-shadow: 5px 10px 16px #CCCCCC;
+}
+
+
+.conteudo__results{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card{
+    width: 350px;
+    height: 136px;
+    display: flex;
+}
+
+.card__info{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+    border-radius: 15px;
+    margin-left: 30px ;
+}
+
+.info__name{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.info__stats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats__attack, .stats__defense{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.stats{
+    width: 40px;
+    height: 40px;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stats__text{
+    color: #3d3d3d;
+    font-size: 0.8em;
+}
+
+.card__types{
+    display: flex;
+    width: 130%;
+    justify-content: space-between;
+}
+
+.card__types p{
+    background-color: red;
+    text-align: center;
+    font-size: 0.8em;
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.card__types p:last-of-type{
+    margin-right: 0;
+}
+
+.card__image{
+    width: 230px;
+    height: 100%;
+    background-image: url('https://nintenduo.com/wp-content/uploads/2022/05/Pokemon-Home-Cambio-Ataques-01.webp');
+    background-size: cover;
+    border-radius: 0 15px 15px 0;
+}
 
 
 /*Main Fim*/

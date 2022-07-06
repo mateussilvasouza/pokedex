@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="../src/styles/reset.css">
     <link rel="stylesheet" href="../src/styles/globalStyle.css">
     <title>Pokédex</title>
-    <script src="../src/services/api.js"></script>
+    <script src="../src/services/getPokemonApi.js"></script>
 </head>
 <body>
     <header>
@@ -27,37 +27,20 @@
 
     <main class="conteudo">
         <section class="conteudo__search">
-            <p>All Pokemons for you chose your favorite</p>
+            <p>All <span>Pokemons</span> for you chose your favorite</p>
             <input id="search" class="search" type="search" placeholder="Encontre seu Pokemon" />
             <div class="search__filter">
-                <button id="type">Tipo</button>
-                <button id="attack">Ataques</button>
-                <button id="experience">Experiência</button>
+                <button> Tipo
+                    <label for="type">
+                        <select id="type" name="type"></select>
+                    </label>
+                </button>
+                <select id="attack" name="attack">Ataques</select>
+                <select id="experience" name="experience">Experiência</select>
             </div>
         </section>
         <section class="conteudo__results">
-            <div class="card">
-                <div class="card__info">
-                    <p class="info__name"></p>
-                    <div class="info__stats">
-                        <div>
-                            <div class="stats"></div>
-                            <p class="stats__text">Attack</p>
-                        </div>
-                        <div>
-                            <div class="stats"></div>
-                            <p class="stats__text">Defense</p>
-                        </div>
-                    </div>
-                    <div class="card__types">
-                        <p>type</p>
-                        <p>type</p>
-                    </div>
-                </div>
-                <div class="card__image">
-                    <img src="" alt="">
-                </div>
-            </div>
+            <ul data-js="render"></ul>
         </section>
     </main>
 
