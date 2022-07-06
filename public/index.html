@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="../src/styles/reset.css">
     <link rel="stylesheet" href="../src/styles/globalStyle.css">
     <title>Pokédex</title>
-    <script src="../src/services/getPokemonApi.js"></script>
+    <script src="../src/services/getPokemonNameApi.js"></script>
 </head>
 <body>
     <header>
@@ -30,18 +30,19 @@
             <p>All <span>Pokemons</span> for you chose your favorite</p>
             <input id="search" class="search" type="search" placeholder="Encontre seu Pokemon" />
             <div class="search__filter">
-                <button> Tipo
-                    <label for="type">
-                        <select id="type" name="type"></select>
-                    </label>
-                </button>
+                <label for="type">
+                    <select id="type" name="type">
+                        <button>Tipo</button>
+                    </select>
+                </label>
+
                 <select id="attack" name="attack">Ataques</select>
                 <select id="experience" name="experience">Experiência</select>
             </div>
         </section>
-        <section class="conteudo__results">
-            <ul data-js="render"></ul>
+        <section id="render" class="conteudo__results">
         </section>
+        <script src="../src/services/savePokemonApi.js"></script>
     </main>
 
     <footer class="footer">

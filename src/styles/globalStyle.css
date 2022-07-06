@@ -10,6 +10,7 @@ header{
     left: 0;
     display: flex;
     align-items: center;
+    box-shadow: 5px 10px 16px #CCCCCC;
 }
 
 .cabecalho{
@@ -81,13 +82,17 @@ header{
 .conteudo__results{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
 .card{
     width: 350px;
-    height: 136px;
+    height: 140px;
     display: flex;
+    border-radius: 15px;
+    box-shadow: 5px 10px 16px #CCCCCC;
+    margin-bottom: 50px
 }
 
 .card__info{
@@ -96,7 +101,7 @@ header{
     flex-grow: 1;
     justify-content: space-around;
     border-radius: 15px;
-    margin-left: 30px ;
+    margin-left: 15px ;
 }
 
 .info__name{
@@ -106,7 +111,7 @@ header{
 
 .info__stats{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .stats__attack, .stats__defense{
@@ -132,6 +137,7 @@ header{
 .card__types{
     display: flex;
     width: 130%;
+    margin-bottom: 5px;
     justify-content: space-between;
 }
 
@@ -139,13 +145,13 @@ header{
     background-color: red;
     text-align: center;
     font-size: 0.8em;
-    width: 100%;
+    width: 50%;
     margin-right: 10px;
     border-radius: 50px;
     z-index: 1;
 }
 
-.card__types p:last-of-type{
+.card__types p:nth-child(2){
     margin-right: 0;
 }
 
@@ -166,6 +172,8 @@ footer{
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: 0;
 }
 
 
