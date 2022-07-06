@@ -37,7 +37,7 @@ mylocalStorage.forEach(value => {
         </div>
         </div>
         <div class="card__image">
-            <img src="" alt="">
+            <img src="${response.sprites.other.dream_world.front_default}" alt="">
         </div>
         </div>`
 

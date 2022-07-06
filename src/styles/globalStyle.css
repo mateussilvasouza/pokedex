@@ -155,11 +155,10 @@ header{
     margin-right: 0;
 }
 
-.card__image{
-    width: 230px;
-    height: 100%;
-    background-image: url('https://nintenduo.com/wp-content/uploads/2022/05/Pokemon-Home-Cambio-Ataques-01.webp');
-    background-size: cover;
+.card__image img{
+    margin-top: 10px;
+    width: 200px;
+    height: 90%;
     border-radius: 0 15px 15px 0;
 }
 
