@@ -14,5 +14,3 @@ async function getPokemonName(){
 }
 
 getPokemonName();
-
-console.log(pokemon)

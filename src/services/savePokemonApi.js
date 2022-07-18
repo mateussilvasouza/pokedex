@@ -1,20 +1,7 @@
 const mylocalStorage = localStorage.getItem('pokemon').split(',')
-const pokemonInfo = []
-
-function getPokemonInfo(){
-    mylocalStorage.forEach(value => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${value}`)
-        .then(response => response.json())
-        .then(response => { pokemonInfo.push(response)}
-        )}
-    )
-}
-
 const target = document.getElementById('render')
-getPokemonInfo()
-
+const requests = []
 const htmlResults = []
-
 
 const createElement = (element,attr,type) => {
 
@@ -26,88 +13,59 @@ const createElement = (element,attr,type) => {
 
 }
 
-const requests = []
+const appendChild = (element, child) => {
+    element.appendChild(child)
+}
+
+const innerHTML = (element, text) => {
+    element.innerHTML = text
+}
 
 mylocalStorage.forEach(value => {
-
-    requests.push(fetch(`https://pokeapi.co/api/v2/pokemon/${value}`).then(response => response.json()))
-
-    //     fetch(`https://pokeapi.co/api/v2/pokemon/${value}`)
-    // .then(response => response.json())
-    // .then(response => { 
-    //     // console.log(response)
-
-    //     // CreateElements
-    //     const card = createElement('div','class','card')
-    //     console.log('A BOA TA AQUId', card)
-
-    //     const card__info = document.createElement('div').setAttribute('class',"card__info")
-    //     const info__name = document.createElement('p').setAttribute('class',"info__name")
-    //     const info__stats = document.createElement('div').setAttribute('class',"info__stats")
-    //     const stats__attack = document.createElement('div').setAttribute('class',"stats__attack")
-    //     const attack = document.createElement('div').setAttribute('class',"stats")
-    //     const stats__attack__text = document.createElement('p').setAttribute('class',"stats__text")
-    //     const stats__defense = document.createElement('div').setAttribute('class',"stats__defense")
-    //     const defense = document.createElement('div').setAttribute('class',"stats__defense")
-    //     const stats__defense__text = document.createElement('p').setAttribute('class',"stats__text")
-    //     const card__types = document.createElement('div').setAttribute('class',"card__types")
-    //     const types_name = document.createElement('p')
-    //     const card__image = document.createElement('div').setAttribute('class',"card__image")
-    //     const img = document.createElement('img').setAttribute('src',`${response.sprites.other.dream_world.front_default}`)
-
-
-    //     // Insert innerHTML
-    //     info__name.innerText = `${response.name}`
-    //     attack.innerText = `${response.stats[1].base_stat}`
-    //     stats__attack__text.innerText = "attack"
-    //     defense.innerText = `${response.stats[2].base_stat}`
-    //     stats__defense__text.innerText = "Defense"
-    //     types_name.innerText = `${response.types[0].type.name}`
-
-    //     //Append elements
-    //     stats__defense.appendChild(defense)
-    //     stats__defense.appendChild(stats__defense__text)
-    //     stats__attack.appendChild(attack)
-    //     stats__attack.appendChild(stats__attack__text)
-    //     info__stats.appendChild(stats__attack)
-    //     info__stats.appendChild(stats__defense)
-    //     card__types.appendChild(types_name)
-    //     card__info.appendChild(info__name)
-    //     card__info.appendChild(info__stats)
-    //     card__info.appendChild(card__types)
-    //     card__image.appendChild(img)
-    //     card.appendChild(card__info)
-    //     card.appendChild(card__image)
-
-    //     // const result =  `<div class="card">
-    //     //                     <div class="card__info">
-    //     //                         <p class="info__name">${response.name}</p>
-    //     //                         <div class="info__stats">
-    //     //                             <div class="stats__attack">
-    //     //                                 <div class="stats">${response.stats[1].base_stat}</div>
-    //     //                                 <p class="stats__text">Attack</p>
-    //     //                             </div>
-    //     //                             <div class="stats__defense">
-    //     //                                 <div class="stats">${response.stats[2].base_stat}</div>
-    //     //                                 <p class="stats__text">Defense</p>
-    //     //                             </div>
-    //     //                         </div>
-    //     //                         <div class="card__types">
-    //     //                             <p>${response.types[0].type.name}</p>
-    //     //                         </div>
-    //     //                     </div>
-    //     //                     <div class="card__image">
-    //     //                         <img src="${response.sprites.other.dream_world.front_default}" alt="">
-    //     //                     </div>
-    //     //                 </div>`
-
-    //     // htmlResults.push(result)
-    //     target.appendChild(card)
-    // })
-    // ).finally(() => {
-    //     target.innerHTML = htmlResults.join('')
-    // })}
+    requests.push(fetch(`https://pokeapi.co/api/v2/pokemon/${value}`).then(response => response.json()).then(response => response))
 })
 
+const buildHTML = (response) => {
+    // CreateElements
+    const card = createElement('div','class','card')
+    const card__info = createElement('div','class',"card__info")
+    const info__name = createElement('p','class',"info__name")
+    const info__stats = createElement('div','class',"info__stats")
+    const stats__attack = createElement('div','class',"stats__attack")
+    const attack = createElement('div','class',"stats")
+    const stats__attack__text = createElement('p','class',"stats__text")
+    const stats__defense = createElement('div','class',"stats__defense")
+    const defense = createElement('div','class',"stats__defense")
+    const stats__defense__text = createElement('p','class',"stats__text")
+    const card__types = createElement('div','class',"card__types")
+    const types_name = createElement('p')
+    const card__image = createElement('div','class',"card__image")
+    const img = createElement('img','src',`${response.sprites.other.dream_world.front_default}`)
 
-Promise.all(requests).then(response => console.log(response))
+     // Insert innerHTML
+     innerText(info__name, `${response.name}`)
+     innerText(attack, `${response.stats[1].base_stat}`)
+     innerText(stats__attack__text, "attack")
+     innerText(defense, `${response.stats[2].base_stat}`)
+     innerText(stats__defense__text, "Defense")
+     innerText(types_name, `${response.types[0].type.name}`)
+
+    //Append elements
+    appendChild(stats__defense, defense)
+    appendChild(stats__defense, stats__defense__text)
+    appendChild(stats__attack, attack)
+    appendChild(stats__attack, stats__attack__text)
+    appendChild(info__stats, stats__attack)
+    appendChild(info__stats, stats__defense)
+    appendChild(card__types, types_name)
+    appendChild(card__info, info__name)
+    appendChild(card__info, info__stats)
+    appendChild(card__info, card__types)
+    appendChild(card__image, img)
+    appendChild(card, card__info)
+    appendChild(card, card__image)
+
+    return card
+}
+
+Promise.all(requests).then(response => htmlResults.push(buildHTML(response)))
