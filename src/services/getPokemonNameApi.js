@@ -1,5 +1,6 @@
-const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=1154&offset=0' // Total de Pokemons disponíveis 1154
+const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=15&offset=0' // Total de Pokemons disponíveis 1154
 const urlType = 'https://pokeapi.co/api/v2/type/'
+const urlRegion = 'https://pokeapi.co/api/v2/region/'
 const pokemon = []
 
 async function getPokemonName(){
@@ -31,3 +32,18 @@ async function getPokemonType(){
 }
 
 getPokemonType()
+
+const regions = []
+async function getPokemonRegions(){
+    await fetch(urlType)
+    .then((response) => response.json())
+    .then((response) => {
+        for(let i of response.results){
+            regions.push(i.name)
+        }
+
+        localStorage.setItem('regions', regions)
+    })
+}
+
+getPokemonRegions()

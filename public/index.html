@@ -30,9 +30,19 @@
             <p>All <span>Pokemons</span> for you chose your favorite</p>
             <input id="search" class="search" type="search" placeholder="Encontre seu Pokemon" />
             <div class="search__filter">
-                <button id='type'>Tipo</button>
-                <button id='attack'>Tipo</button>
-                <button id='experience'>Tipo</button>
+                <div class="modal">
+                    <button id="type">Tipo</button>
+                    <ul id="modalType"class="modalFilter"></ul>
+                </div>
+                <div class="modal">
+                     <button id='region'>Região</button>
+                     <ul id="modalRegion"class="modalFilter"></ul>
+                </div>
+                <div class="modal">
+                    <button id='experience'>Experience</button>
+                    <ul id="modalExperience"class="modalFilter"></ul>
+
+                </div>
             </div>
         </section>
         <section id="render" class="conteudo__results">

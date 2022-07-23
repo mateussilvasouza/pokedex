@@ -1,5 +1,7 @@
 //Recebe um array com o nome dos pokemons armazenados no localStorage
 const myPokemon = localStorage.getItem('pokemon').split(',')
+const myTypes = localStorage.getItem('types').split(',')
+const myRegions = localStorage.getItem('regions').split(',')
 
 //Recebe o elemento com o Id render
 const target = document.getElementById('render')
@@ -163,4 +165,45 @@ Promise.all(requests)
         const card = buildHTML(value)
         target.appendChild(card)})
     })
+
+const typeList = document.getElementById('modalType')
+const regionList = document.getElementById('modalRegion')
+const experienceList = document.getElementById('modalExperience')
+
+function renderFilter(array,element){
+    array.forEach(type => {
+        const li = createElement('li')
+        const p = createElement('p')
+        const input = createElement('input', 'type', 'checkbox')
+        input.setAttribute('id',`${type}`)
+        input.setAttribute('name', `${type}`)
+        innerHTML(p,`${type}`)
+        li.appendChild(input)
+        li.appendChild(p)
+        element.appendChild(li)
+    })
+}
+
+renderFilter(myTypes,typeList)
+renderFilter(myRegions,regionList)
+
+function viewModal(modalId){
+    const modal = document.getElementById(modalId)
+    if((modal.classList).contains('open')){
+        modal.classList.remove('open')
+    } else {
+        modal.classList.add('open')
+    }
+}
+
+
+
+const btnType = document.getElementById('type')
+btnType.addEventListener('click', () => {
+    viewModal('modalType')}
+)
+const btnRegion = document.getElementById('region')
+btnType.addEventListener('click', () => {
+    viewModal('modalRegion')}
+)
 
