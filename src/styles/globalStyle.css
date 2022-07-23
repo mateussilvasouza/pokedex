@@ -1,16 +1,22 @@
 body{
     font-family: Karla, "Source Sans Pro", sans-serif;
 }
+
+ul{
+    list-style: none;
+}
 /*Header Início*/
 header{
+    width: 100%;
     height: 100px;
     background-color: #F5DB13;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
     box-shadow: 5px 10px 16px #CCCCCC;
+    z-index: 2;
 }
 
 .cabecalho{
@@ -28,7 +34,6 @@ header{
 }
 
 .cabecalho__nav ul{
-    list-style: none;
     display: flex;
 }
 
@@ -47,10 +52,11 @@ header{
 .conteudo{
     width: 100%;
     max-width: 1200px;
-    margin: auto;
+    margin: 100px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: auto;
 }
 
 .conteudo__search > * {
@@ -87,12 +93,14 @@ header{
 }
 
 .card{
-    width: 350px;
+    width: 330px;
     height: 140px;
+    border: 1px solid rgba(204, 204, 204, 0.7);
+    border-bottom: none;
     display: flex;
     border-radius: 15px;
-    box-shadow: 5px 10px 16px #CCCCCC;
-    margin-bottom: 50px
+    box-shadow:  0 15px 20px rgb(204, 204, 204);
+    margin: 25px 0 25px 10px;
 }
 
 .card__info{
@@ -128,6 +136,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 500;
 }
 .stats__text{
     color: #3d3d3d;
@@ -155,6 +164,10 @@ header{
     margin-right: 0;
 }
 
+.card__image{
+    border-radius: 0 15px 15px 0;
+}
+
 .card__image img{
     margin-top: 10px;
     width: 200px;
@@ -167,17 +180,22 @@ header{
 /*Footer Início*/
 footer{
     width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
 }
 
-
-
-
+.footer__element{
+    width: 100%;
+    max-width: 1024px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
 
 .heart__icon{
     color: #ff0000;

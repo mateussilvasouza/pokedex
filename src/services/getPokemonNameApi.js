@@ -1,8 +1,8 @@
-const url = 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0'
-const pokemon = [];
+const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=154&offset=0' // Total de Pokemons disponíveis 1154
+const pokemon = []
 
 async function getPokemonName(){
-    await fetch(url)
+    await fetch(urlName)
     .then((response) => response.json())
     .then((response) => {
         for(let i of response.results){
@@ -14,3 +14,5 @@ async function getPokemonName(){
 }
 
 getPokemonName();
+
+
