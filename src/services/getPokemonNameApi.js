@@ -35,7 +35,7 @@ getPokemonType()
 
 const regions = []
 async function getPokemonRegions(){
-    await fetch(urlType)
+    await fetch(urlRegion)
     .then((response) => response.json())
     .then((response) => {
         for(let i of response.results){
