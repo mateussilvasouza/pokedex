@@ -27,6 +27,61 @@ const innerHTML = (element, text) => {
     element.innerHTML = text
 }
 
+//Renderiza os cards
+const render = (element) => {
+    const card = buildCard(element)
+    //Adiciona cada resultado com a estrutura HTML montada a página
+    target.appendChild(card)
+}
+
+//Construi a estrutura dos cards
+const buildCard = (response) => {
+    // CreateElements
+    const card = createElement('div','class','card')
+    const card__info = createElement('div','class',"card__info")
+    const info__name = createElement('p','class',"info__name")
+    const info__stats = createElement('div','class',"info__stats")
+    const stats__attack = createElement('div','class',"stats__attack")
+    const attack = createElement('div','class',"stats")
+    const stats__attack__text = createElement('p','class',"stats__text")
+    const stats__defense = createElement('div','class',"stats__defense")
+    const defense = createElement('div','class',"stats")
+    const stats__defense__text = createElement('p','class',"stats__text")
+    const card__types = createElement('div','class',"card__types")
+    const card__image = createElement('div','class',"card__image")
+    setColorStyle(card__image, `${response.types[0].type.name}`)
+    const img = createElement('img','src',`${response.sprites.other.dream_world.front_default || response.sprites.front_default ||response.sprites.other.home.front_default}`)
+            
+    // Insert innerHTML
+    innerHTML(info__name, `${response.name[0].toUpperCase() + response.name.substr(1)}`)
+    innerHTML(attack, `${response.stats[1].base_stat}`)
+    innerHTML(stats__attack__text, "Attack")
+    innerHTML(defense, `${response.stats[2].base_stat}`)
+    innerHTML(stats__defense__text, "Defense")
+    
+    response.types.map( type => {
+        const typesElements = createElement('p')
+        innerHTML(typesElements, `${type.type.name[0].toUpperCase() + type.type.name.substr(1)}`)
+        setColorStyle(typesElements, `${type.type.name}`)
+        appendChild(card__types, typesElements)
+    } )
+    //Append elements
+    appendChild(stats__defense, defense)
+    appendChild(stats__defense, stats__defense__text)
+    appendChild(stats__attack, attack)
+    appendChild(stats__attack, stats__attack__text)
+    appendChild(info__stats, stats__attack)
+    appendChild(info__stats, stats__defense)
+    appendChild(card__info, info__name)
+    appendChild(card__info, info__stats)
+    appendChild(card__info, card__types)
+    appendChild(card__image, img)
+    appendChild(card, card__info)
+    appendChild(card, card__image)
+
+    return card
+}
+
 //<------------- Fím ---------------->
 
 /**Manipulação da busca*/
@@ -42,10 +97,6 @@ const handleChange = (Id) => {
     console.log(element.value)
 }
 
-
-
-
-
 /**Renderização e manipulação dos filtros*/
 //<------------- Início ---------------->
 const myTypes = localStorage.getItem('types').split(',')
@@ -55,6 +106,14 @@ const typeList = getElementById('modalType')
 const regionList = getElementById('modalRegion')
 const experienceList = getElementById('modalExperience')
 
+const filter = (element) => {
+   if(element.checked){
+        element.checked = false
+   } else {
+        element.checked = true
+   }
+}
+
 //Renderiza os filtros
 function renderFilter(array,element){
     array.forEach(type => {
@@ -62,8 +121,11 @@ function renderFilter(array,element){
         const p = createElement('p')
         const input = createElement('input', 'type', 'checkbox')
         input.setAttribute('id',`${type}`)
-        input.setAttribute('name', `${type}`)
-        innerHTML(p,`${type}`)
+        input.setAttribute('value', `${type}`)
+        p.addEventListener('click', ()=>{
+            filter(input)
+        })
+        innerHTML(p,`${type[0].toUpperCase() + type.substr(1)}`)
         li.appendChild(input)
         li.appendChild(p)
         element.appendChild(li)
@@ -91,6 +153,21 @@ const btnRegion = getElementById('region')
 btnRegion.addEventListener('click', () => {
     viewModal('modalRegion')}
 )
+
+
+const checked = getElementById('grass')
+checked.addEventListener('change', () => {
+    if(checked.checked){
+        htmlResults.forEach(response => {
+            response.types.forEach(type =>{
+                if(type.type.name == checked.value){
+                    render(response)
+                }
+            })
+        })
+    }
+})
+
 //<------------- Fím ---------------->
 
 /**Renderização inicial de Pokemons*/
@@ -168,53 +245,6 @@ const setColorStyle = (typesElements, type) => {
      }
 }
 
-//Construi a estrutura no html
-const buildHTML = (response) => {
-        // CreateElements
-        const card = createElement('div','class','card')
-        const card__info = createElement('div','class',"card__info")
-        const info__name = createElement('p','class',"info__name")
-        const info__stats = createElement('div','class',"info__stats")
-        const stats__attack = createElement('div','class',"stats__attack")
-        const attack = createElement('div','class',"stats")
-        const stats__attack__text = createElement('p','class',"stats__text")
-        const stats__defense = createElement('div','class',"stats__defense")
-        const defense = createElement('div','class',"stats")
-        const stats__defense__text = createElement('p','class',"stats__text")
-        const card__types = createElement('div','class',"card__types")
-        const card__image = createElement('div','class',"card__image")
-        setColorStyle(card__image, `${response.types[0].type.name}`)
-        const img = createElement('img','src',`${response.sprites.other.dream_world.front_default || response.sprites.front_default ||response.sprites.other.home.front_default}`)
-                
-        // Insert innerHTML
-        innerHTML(info__name, `${response.name[0].toUpperCase() + response.name.substr(1)}`)
-        innerHTML(attack, `${response.stats[1].base_stat}`)
-        innerHTML(stats__attack__text, "Attack")
-        innerHTML(defense, `${response.stats[2].base_stat}`)
-        innerHTML(stats__defense__text, "Defense")
-        
-        response.types.map( type => {
-            const typesElements = createElement('p')
-            innerHTML(typesElements, `${type.type.name[0].toUpperCase() + type.type.name.substr(1)}`)
-            setColorStyle(typesElements, `${type.type.name}`)
-            appendChild(card__types, typesElements)
-        } )
-        //Append elements
-        appendChild(stats__defense, defense)
-        appendChild(stats__defense, stats__defense__text)
-        appendChild(stats__attack, attack)
-        appendChild(stats__attack, stats__attack__text)
-        appendChild(info__stats, stats__attack)
-        appendChild(info__stats, stats__defense)
-        appendChild(card__info, info__name)
-        appendChild(card__info, info__stats)
-        appendChild(card__info, card__types)
-        appendChild(card__image, img)
-        appendChild(card, card__info)
-        appendChild(card, card__image)
-
-        return card
-}
 
 //Armazena o Json das promises
 const requests = []
@@ -234,13 +264,6 @@ Promise.all(requests)
     .then(response => {
         response.forEach(response => {
             htmlResults.push(response)})})
-    .then(
-    () => {
-    htmlResults.forEach(value => {
-        const card = buildHTML(value)
-        //Adiciona cada resultado com a estrutura HTML montada a página
-        target.appendChild(card)})
-    })
-
+    .then( () => {
+        htmlResults.forEach(response => render(response))})
 //<------------- Fím ---------------->
-
