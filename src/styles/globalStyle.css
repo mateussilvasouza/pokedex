@@ -127,6 +127,9 @@ header{
     background-color: #F2F2F2;
     z-index: 5;
     cursor: pointer;
+    float: initial;
+    position: absolute;
+    top: 42%;
 }
 
 .modalFilter.open li{
