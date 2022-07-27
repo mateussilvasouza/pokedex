@@ -100,6 +100,7 @@ const setColorStyle = (typesElements, type) => {
 const buildCard = (response) => {
     // CreateElements
     const card = createElement('div','class','card')
+    card.setAttribute('name',`${response.name}`)
     const card__info = createElement('div','class',"card__info")
     const info__name = createElement('p','class',"info__name")
     const info__stats = createElement('div','class',"info__stats")
@@ -181,45 +182,53 @@ const experienceList = getElementById('modalExperience')
 
 //Altera o status do filtro
 const filter = (element,modalId) => {
-    const element2 = getElementById(modalId)
     if(element.checked){
         element.checked = false
         viewModal(modalId)
    } else {
         element.checked = true
         viewModal(modalId)
-        console.log(element2)
    }
+}
 
+const renderFilterResults = (array) =>{
+    clearRender(target)
+    array.forEach( input => {
+        if(input.checked){
+            htmlResults.forEach(response => {
+                response.types.forEach(type =>{
+                    if(type.type.name == input.value){
+                        render(response, target)
+                    }
+                })
+            })
+        } else {
+            clearRender(target)
+            htmlResults.forEach(response => render(response, target))
+        }
+    })
 }
 
 //Renderiza os filtros
-function renderFilter(array,Id){
+const renderFilter = (array,Id)=> {
     const element = getElementById(Id)
+    element.addEventListener('change', ()=>{
+        const array = []
+        element.childNodes.forEach(li => {
+            array.push(li)
+        })
+        array.forEach(li => console.log)
+    })
     array.forEach(type => {
         const li = createElement('li','key', `${type}`)
+        li.addEventListener('click', ()=>{
+            filter(input, Id)
+          
+        })
         const p = createElement('p','key', `${type}`)
         const input = createElement('input', 'type', 'checkbox')
         input.setAttribute('id',`${type}`)
         input.setAttribute('value', `${type}`)
-        p.addEventListener('click', ()=>{
-            filter(input, Id)
-        })
-        input.addEventListener('change', () => {
-            if(input.checked){
-                clearRender(target)
-                htmlResults.forEach(response => {
-                    response.types.forEach(type =>{
-                        if(type.type.name == input.value){
-                            render(response, target)
-                        }
-                    })
-                })
-            } else {
-                clearRender(target)
-                htmlResults.forEach(response => render(response, target))
-            }
-        })
         innerHTML(p,`${type[0].toUpperCase() + type.substr(1)}`)
         li.appendChild(input)
         li.appendChild(p)
