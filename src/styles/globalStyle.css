@@ -49,13 +49,23 @@ header{
 /*Header Fim*/
 
 /*Main Início*/
+
+.conteudo,
+.conteudo__search,
+.search__filter,
+.modal,
+.modal__content,
+.modalFilter.open,
+.modalFilter.open li{
+    display: flex;
+    align-items: center;
+}
+
 .conteudo{
     width: 100vw;
     max-width: 1200px;
     margin: 100px auto 0;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     overflow: auto;
 }
 
@@ -64,8 +74,6 @@ header{
 }
 .conteudo__search{
     width: 100%;
-    display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
     font-size: 2em;
@@ -88,23 +96,24 @@ header{
 
 .search__filter{
     width: 30vw;
-    display: flex;
     align-self: flex-end;
     justify-content: space-evenly;
     margin-right: 130px;
 }
 
 .modal{
-    display: flex;
     flex-direction: column;
-    align-items: center;
     margin-left: 30px;
+}
+
+.modal__content{
+    position: relative;
+    flex-direction: column;
 }
 
 .modal:nth-child(1){
     margin-left: none;
 }
-
 
 .modal button{
     width: 135px;
@@ -120,20 +129,18 @@ header{
     width: 150px;
     border-radius: 15px;
     margin-top: 10px;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     background-color: #F2F2F2;
     z-index: 5;
     cursor: pointer;
-    float: initial;
     position: absolute;
-    top: 42%;
+    top: 2rem;
 }
 
 .modalFilter.open li{
-    display: flex;
+    width: 100%;
+    justify-content: center;
     margin: 5px 0;
     font-size: 0.5em;
 }
