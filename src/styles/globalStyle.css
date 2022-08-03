@@ -96,14 +96,14 @@ header{
 
 .search__filter{
     width: 30vw;
-    align-self: flex-end;
+    align-self: flex-start;
     justify-content: space-evenly;
-    margin-right: 130px;
+    margin-left: 100px;
 }
 
 .modal{
     flex-direction: column;
-    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .modal__content{
