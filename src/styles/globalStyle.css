@@ -112,32 +112,45 @@ header{
     flex-direction: column;
 }
 
-.modal:nth-child(1){
-    margin-left: none;
+.modal:nth-child(3){
+    margin-right: none;
 }
 
 .modal__button{
-    width: 135px;
+    justify-content: center;
+    width: 110px;
     border-radius: 30px;
     background-color: #F2F2F2;
     box-shadow: 5px 10px 16px #CCCCCC;
     cursor: pointer;
 }
 .modal__button button{
-    flex-grow: 2;
     border: none;
-    border-radius: 30px;
     background-color: #F2F2F2;
     line-height: 1.5em;
+    margin-left: 5px;
 }
 
 .arrow__icon{
-    width: 10%;
-    flex-grow: 0;
+    width: 15%;
+    margin-left: 5px;
     transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
 }
+
+.arrow__icon.open{
+    width: 15%;
+    margin-left: 5px;
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
+
 .modalFilter.open{
-    width: 150px;
+    width: 130px;
     border-radius: 15px;
     margin-top: 10px;
     flex-direction: column;
