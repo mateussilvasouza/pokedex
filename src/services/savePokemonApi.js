@@ -218,7 +218,7 @@ const renderFilter = (array,Id)=> {
         const array = Array.from(element.childNodes).map(li => {
             return(li)
         })
-        const checked = array.map(li => {
+        const checked = array.filter(li => {
             if(li.firstChild.checked) return li.firstChild.value
         })
         renderFilterResults(checked)
@@ -247,10 +247,13 @@ renderFilter(myRegions,'modalRegion')
 
 function viewModal(modalId){
     const modal = getElementById(modalId)
+    const arrowIcon = getElementById('arrow_icon')
     if((modal.classList).contains('open')){
         modal.classList.remove('open')
+        arrowIcon.classList.remove('open')
     } else {
         modal.classList.add('open')
+        arrowIcon.classList.add('open')
     }
 }
 
