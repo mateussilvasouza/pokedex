@@ -32,13 +32,18 @@
             <div class="search__filter">
                 <div class="modal">
                     <div class="modal__content">
-                        <button id="type">Tipo</button>
+                        <div class="">
+                            <button id="type">Tipo</button>
+                            <!--<img class='arrow__icon' src="" alt="Seta">-->
+                        </div>
                         <ul id="modalType"class="modalFilter"></ul>
                     </div>
                 </div>
                 <div class="modal">
                     <div class="modal__content">
-                        <button id='region'>Região</button>
+                        <div>
+                            <button id='region'>Região</button>
+                        </div>
                         <ul id="modalRegion"class="modalFilter"></ul>
                     </div>
                 </div>
@@ -50,8 +55,7 @@
                 </div>
             </div>
         </section>
-        <section id="render" class="conteudo__results">
-        </section>
+        <section id="render" class="conteudo__results"></section>
         <script src="../src/services/savePokemonApi.js"></script>
     </main>
 
