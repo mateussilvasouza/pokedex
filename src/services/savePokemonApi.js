@@ -100,7 +100,7 @@ const setColorStyle = (typesElements, type) => {
 const buildCard = (response) => {
     // CreateElements
     const card = createElement('div','class','card')
-    card.setAttribute('name',`${response.name}`)
+    card.setAttribute('key',`${response.name}`)
     const card__info = createElement('div','class',"card__info")
     const info__name = createElement('p','class',"info__name")
     const info__stats = createElement('div','class',"info__stats")
@@ -193,32 +193,38 @@ const filter = (element,modalId) => {
 
 const renderFilterResults = (array) =>{
     clearRender(target)
-    array.forEach( input => {
-        if(input.checked){
-            htmlResults.forEach(response => {
-                response.types.forEach(type =>{
-                    if(type.type.name == input.value){
-                        render(response, target)
-                    }
-                })
-            })
-        } else {
-            clearRender(target)
-            htmlResults.forEach(response => render(response, target))
-        }
+    if(!array.length){
+        htmlResults.forEach(response => render(response, target))
+    } else {
+        let pokemons = htmlResults.filter(pokemon => {
+            return !pokemon.types.filter(type => array.includes(type.type.name)).length == 0
+        })
+        pokemons.forEach(pokemon => render(pokemon, target))
+    }
+}
+
+const searchRender = (element, value) => {
+    let check = false
+    element.childNodes.forEach(child => {
+        if(child.getAttribute("key") == value) {check = true}
     })
+    return check
 }
 
 //Renderiza os filtros
 const renderFilter = (array,Id)=> {
     const element = getElementById(Id)
-    element.addEventListener('change', ()=>{
-        const array = []
-        element.childNodes.forEach(li => {
-            array.push(li)
+    element.addEventListener('click', ()=>{
+        const array = Array.from(element.childNodes).map(li => {
+            return(li)
         })
-        array.forEach(li => console.log)
+        const checked = array.map(li => {
+            if(li.firstChild.checked) return li.firstChild.value
+        })
+        renderFilterResults(checked)
     })
+
+
     array.forEach(type => {
         const li = createElement('li','key', `${type}`)
         li.addEventListener('click', ()=>{
