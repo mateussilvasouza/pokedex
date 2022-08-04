@@ -170,7 +170,10 @@ search.addEventListener("input", ()=>{
 
 const handleChange = (Id) => {
     const element = getElementById(Id)
-    console.log(element.value)
+    console.log(element.value.length)
+    myPokemon.filter(name => {
+        if(name.substring(0,element.value.length) == element.value && element.value.length != 0) console.log(name)
+    })
 }
 
 /**Renderização e manipulação dos filtros*/
