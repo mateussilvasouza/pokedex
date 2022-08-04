@@ -218,10 +218,13 @@ const renderFilter = (array,Id)=> {
         const array = Array.from(element.childNodes).map(li => {
             return(li)
         })
-        const checked = array.filter(li => {
+        const checked = array.map(li => {
             if(li.firstChild.checked) return li.firstChild.value
         })
-        renderFilterResults(checked)
+
+        const result = checked.filter(li => {if(li != 'undefined') return li})
+
+        renderFilterResults(result)
     })
 
 
@@ -229,12 +232,14 @@ const renderFilter = (array,Id)=> {
         const li = createElement('li','key', `${type}`)
         li.addEventListener('click', ()=>{
             filter(input, Id)
-          
         })
         const p = createElement('p','key', `${type}`)
         const input = createElement('input', 'type', 'checkbox')
         input.setAttribute('id',`${type}`)
         input.setAttribute('value', `${type}`)
+        input.addEventListener('click', ()=>{
+            filter(input, Id)
+        })
         innerHTML(p,`${type[0].toUpperCase() + type.substr(1)}`)
         li.appendChild(input)
         li.appendChild(p)
@@ -247,13 +252,14 @@ renderFilter(myRegions,'modalRegion')
 
 function viewModal(modalId){
     const modal = getElementById(modalId)
-    const arrowIcon = getElementById('arrow_icon')
+    let arrowList = Array.from(document.getElementsByClassName('arrow__icon'))
+    let arrow = arrowList.find( element => {if(element.getAttribute('key') === modalId) return element})
     if((modal.classList).contains('open')){
         modal.classList.remove('open')
-        arrowIcon.classList.remove('open')
+        arrow.classList.remove('open')
     } else {
         modal.classList.add('open')
-        arrowIcon.classList.add('open')
+        arrow.classList.add('open')
     }
 }
 
