@@ -193,6 +193,7 @@ const filter = (element,modalId) => {
 
 const renderFilterResults = (array) =>{
     clearRender(target)
+    console.log(array)
     if(!array.length){
         htmlResults.forEach(response => render(response, target))
     } else {
@@ -215,13 +216,15 @@ const searchRender = (element, value) => {
 const renderFilter = (array,Id)=> {
     const element = getElementById(Id)
     element.addEventListener('click', ()=>{
-        const array = Array.from(element.childNodes).map(li => {
+        const array = Array.from(element.childNodes).map(li => { 
             return(li)
         })
-        const checked = array.filter(li => {
-            if(li.firstChild.checked) return li.firstChild.value
+        const checked = array.map(li => {
+            if(li.firstChild.checked) return (li.firstChild.value)
         })
-        renderFilterResults(checked)
+
+        const value = checked.filter(li => {if(li != 'undefined') return li})
+        renderFilterResults(value)
     })
 
 
