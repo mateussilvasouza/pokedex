@@ -162,6 +162,8 @@ const clearRender = (element) => {
 
 /**Manipulação da busca*/
 //<------------- Início ---------------->
+
+
 const search = getElementById('search')
 search.addEventListener("input", ()=>{
     handleChange('search')
@@ -169,11 +171,20 @@ search.addEventListener("input", ()=>{
 
 
 const handleChange = (Id) => {
-    const element = getElementById(Id)
-    console.log(element.value.length)
-    myPokemon.filter(name => {
-        if(name.substring(0,element.value.length) == element.value && element.value.length != 0) console.log(name)
+    const search = getElementById(Id)
+    const names = myPokemon.filter(name => {
+        if(name.substring(0,search.value.length) == search.value && search.value.length != 0) return(name)
     })
+    const renderSearch = htmlResults.filter(pokemon => {
+        if(pokemon.name == (names.filter(name => name == pokemon.name))) return pokemon
+    })
+    if(!search.value.length){
+        clearRender(target)
+        htmlResults.forEach(pokemon => render(pokemon, target))
+    } else {
+        clearRender(target)
+        renderSearch.forEach(pokemon => render(pokemon, target))
+    }
 }
 
 /**Renderização e manipulação dos filtros*/
@@ -231,7 +242,6 @@ const renderFilter = (array,Id)=> {
         renderFilterResults(result)
     })
 
-
     array.forEach(type => {
         const li = createElement('li','key', `${type}`)
         li.addEventListener('click', ()=>{
@@ -285,7 +295,9 @@ const myPokemon = localStorage.getItem('pokemon').split(',')
 
 const target = getElementById('render')
 
+target.addEventListener('change', () => {
 
+})
 
 //Armazena o Json das promises
 const requests = []

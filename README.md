@@ -1,6 +1,4 @@
-# pokedex
+# Pokedex (V0)
 
-versão 0.0
-
-Pokedex criada com o uso do html, css e javascript para prática de conhecimentos.
+Pokedex criada com o uso do html, css e javascript, trabalhando com a criação e renderização de conteúdo através do javascript, junto com comportamentos específicos.
 
