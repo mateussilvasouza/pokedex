@@ -160,42 +160,47 @@ const clearRender = (element) => {
 }
 //<------------- Fím ---------------->
 
+const body = document.getElementsByTagName('body')
+const search = getElementById('search')
+
+body.addEventListener('change',() => {
+    let searchFilter = handleChange(search)
+    let typeFilter = getCheckedFilter(myTypes,'modalType')
+
+})
+
 /**Manipulação da busca*/
 //<------------- Início ---------------->
 
+//Lógica será aplicada ao body, tornando inviável mantê-la aqui.
+// search.addEventListener("input", (search)=>{
+//     handleChange(search)
+// })
 
-const search = getElementById('search')
-search.addEventListener("input", ()=>{
-    handleChange('search')
-})
-
-
-const handleChange = (Id) => {
-    const search = getElementById(Id)
+//Retorna um array de pokemons cujo nome contém a string informada
+const handleChange = (search) => {
     const names = myPokemon.filter(name => {
         if(name.substring(0,search.value.length) == search.value && search.value.length != 0) return(name)
     })
     const renderSearch = htmlResults.filter(pokemon => {
         if(pokemon.name == (names.filter(name => name == pokemon.name))) return pokemon
     })
-    if(!search.value.length){
-        clearRender(target)
-        htmlResults.forEach(pokemon => render(pokemon, target))
-    } else {
-        clearRender(target)
-        renderSearch.forEach(pokemon => render(pokemon, target))
-    }
+
+    return renderSearch
+    // if(!search.value.length){
+    //     clearRender(target)
+    //     htmlResults.forEach(pokemon => render(pokemon, target))
+    // } else {
+    //     clearRender(target)
+    //     renderSearch.forEach(pokemon => render(pokemon, target))
+    // }
 }
 
 /**Renderização e manipulação dos filtros*/
 //<------------- Início ---------------->
-const myTypes = localStorage.getItem('types').split(',')
-const myRegions = localStorage.getItem('regions').split(',')
 
-const experienceList = getElementById('modalExperience')
-
-//Altera o status do filtro
-const filter = (element,modalId) => {
+//Altera o estado do filtro
+const changeFilterState = (element,modalId) => {
     if(element.checked){
         element.checked = false
         viewModal(modalId)
@@ -206,18 +211,16 @@ const filter = (element,modalId) => {
 }
 
 const renderFilterResults = (array) =>{
-    clearRender(target)
-    console.log(array)
     if(!array.length){
         htmlResults.forEach(response => render(response, target))
     } else {
         let pokemons = htmlResults.filter(pokemon => {
             return !pokemon.types.filter(type => array.includes(type.type.name)).length == 0
         })
-        pokemons.forEach(pokemon => render(pokemon, target))
+       return pokemons
     }
 }
-
+//
 const searchRender = (element, value) => {
     let check = false
     element.childNodes.forEach(child => {
@@ -229,30 +232,18 @@ const searchRender = (element, value) => {
 //Renderiza os filtros
 const renderFilter = (array,Id)=> {
     const element = getElementById(Id)
-    element.addEventListener('click', ()=>{
-        const array = Array.from(element.childNodes).map(li => { 
-            return(li)
-        })
-        const checked = array.map(li => {
-            if(li.firstChild.checked) return (li.firstChild.value)
-        })
-
-        const result = checked.filter(li => {if(li != 'undefined') return li})
-
-        renderFilterResults(result)
-    })
 
     array.forEach(type => {
         const li = createElement('li','key', `${type}`)
         li.addEventListener('click', ()=>{
-            filter(input, Id)
+            changeFilterState(input, Id)
         })
         const p = createElement('p','key', `${type}`)
         const input = createElement('input', 'type', 'checkbox')
         input.setAttribute('id',`${type}`)
         input.setAttribute('value', `${type}`)
         input.addEventListener('click', ()=>{
-            filter(input, Id)
+            changeFilterState(input, Id)
         })
         innerHTML(p,`${type[0].toUpperCase() + type.substr(1)}`)
         li.appendChild(input)
@@ -261,9 +252,25 @@ const renderFilter = (array,Id)=> {
     })
 }
 
+//Retorna os filtros selecionados
+const getCheckedFilter = (array, Id)=>{
+    let element = getElementById(Id)
+    const array = Array.from(element.childNodes).map(li => { 
+        return(li)
+    })
+    const checked = array.map(li => {
+        if(li.firstChild.checked) return (li.firstChild.value)
+    })
+
+    const result = checked.filter(li => {if(li != 'undefined') return li})
+
+    return result
+}
+
 renderFilter(myTypes,'modalType')
 renderFilter(myRegions,'modalRegion')
 
+//Altera a visualização do modal entre abrir e fechar
 function viewModal(modalId){
     const modal = getElementById(modalId)
     let arrowList = Array.from(document.getElementsByClassName('arrow__icon'))
@@ -294,10 +301,6 @@ btnRegion.addEventListener('click', () => {
 const myPokemon = localStorage.getItem('pokemon').split(',')
 
 const target = getElementById('render')
-
-target.addEventListener('change', () => {
-
-})
 
 //Armazena o Json das promises
 const requests = []
