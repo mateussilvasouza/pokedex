@@ -1,10 +1,12 @@
 body{
     font-family: Karla, "Source Sans Pro", sans-serif;
+    background: 000000;
 }
 
 ul{
     list-style: none;
 }
+
 
 /*Main Início*/
 
@@ -111,6 +113,9 @@ ul{
     -o-transform: rotate(270deg);
 }
 
+.modalFilter{
+    display: none;
+}
 
 .modalFilter.open{
     width: 130px;
@@ -148,24 +153,8 @@ ul{
     text-indent: 5px;
 }
 
-
 .modalFilter, .modalFilter > * {
     display: none;
-}
-
-@keyframes openModal{
-    from {
-        opacity: 0;
-        transform: translate3d(0, -10px,0)
-    }
-    to{
-        opacity: 1;
-        transform: translate3d(0,0,0);
-    }
-}
-
-.abrir .modalFilter{
-    animation: modalFilter .3s;
 }
 
 
@@ -175,6 +164,7 @@ ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-top: 20px;
     margin-bottom: 50px;
 }
 
@@ -186,7 +176,7 @@ ul{
     display: flex;
     border-radius: 15px;
     box-shadow:  0 15px 20px rgb(204, 204, 204);
-    margin: 25px 0 25px 10px;
+    margin: 0 0 25px;
 }
 
 .card__info{

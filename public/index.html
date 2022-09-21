@@ -8,11 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="../src/styles/reset.css">
     <link rel="stylesheet" href="../src/styles/globalStyle.css">
     <link rel="stylesheet" href="../src/styles/header.css">
+    <link rel="stylesheet" href="../src/styles/darkMode.css">
     <title>Pokédex</title>
     <script src="../src/services/getPokemonNameApi.js"></script>
 </head>
 <body>
-    <header>
+    <div id="dark_mode" class="dark__mode">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <header>    
         <div class="cabecalho">
             <img src="../src/assets/Logo.png" alt="Logotipo de Pokémon" class="cabecalho__logo">
             <nav class="cabecalho__nav">
@@ -42,10 +54,10 @@
                 </div>
                 <div class="modal">
                     <div class="modal__content">
-                        <div class="modal__button">
+                        <label class="modal__button">
                             <button id="region">Região</button>
                             <img key="modalRegion" class='arrow__icon' src="../src/assets/arrow.png" alt="Seta">
-                        </div>
+                        </label>
                         <ul id="modalRegion"class="modalFilter"></ul>
                     </div>
                 </div>
@@ -88,7 +100,9 @@
         </div>
     </footer>
 
+    <script>
 
+    </script>
 
 
 </body>

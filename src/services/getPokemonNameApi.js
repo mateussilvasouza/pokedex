@@ -1,21 +1,27 @@
-const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=905&offset=0' // Total de Pokemons disponíveis 1154
+const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=105&offset=0' // Total de Pokemons disponíveis 1154
 const urlType = 'https://pokeapi.co/api/v2/type/'
 const urlRegion = 'https://pokeapi.co/api/v2/region/'
 const pokemon = []
 
-async function getPokemonName(){
+async function getPokemonURL(){
     await fetch(urlName)
     .then((response) => response.json())
     .then((response) => {
         for(let i of response.results){
-            pokemon.push(i.name)
+           pokemon.push(i.name)
         }
-
-        localStorage.setItem('pokemon', pokemon)
+        localStorage.setItem('pokemon', JSON.stringify(pokemon))
     })
 }
 
-getPokemonName();
+async function getPokemon({url}){
+    await fetch(url)
+   .then(response => response.json())
+   .then(response => pokemon.push(response))
+}
+
+getPokemonURL();
+
 
 
 const types = []

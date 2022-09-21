@@ -1,12 +1,21 @@
-import { createElement, innerHTML, buildCard } from "./components/Constructors.js"
+import { createElement, innerHTML } from "./components/Constructors.js"
+import { clearRender, renderCard, viewModal } from "./components/Behavior.js"
 /**Declaração de variáveis*/
 //<------------- Início ---------------->
-const myPokemon = localStorage.getItem('pokemon').split(',')
+const myPokemon = JSON.parse(localStorage.getItem('pokemon').split(','))
 const myTypes = localStorage.getItem('types').split(',')
 const myRegions = localStorage.getItem('regions').split(',')
 const body = document.getElementsByTagName('body')[0]
 //<--------------- Fím ----------------->
-
+const darkmode = document.getElementById('dark_mode')
+//const body = document.getElementsByTagName('body')[0]
+darkmode.addEventListener('click', ()=>{
+    if(body.style.backgroundColor == 'rgb(255, 255, 255)'){
+        body.style.backgroundColor = 'rgb(0, 0, 0)';
+    } else {
+        body.style.backgroundColor = 'rgb(255, 255, 255)'
+    }
+})
 /**Funções construtoras globais */
 //<------------- Início ---------------->
 //Recebe o Id do elemento na página e retorna o html
@@ -51,16 +60,6 @@ const renderFilter = (array,Id)=> {
     })
 }
 
-//Altera o estado do filtro
-const changeFilterState = (element,modalId) => {
-    if(element.checked){
-        element.checked = false
-        viewModal(modalId)
-   } else {
-        element.checked = true
-        viewModal(modalId)
-   }
-}
 
 //Retorna os filtros ativos
 const getCheckedFilter = (Id)=>{
@@ -75,33 +74,10 @@ const getCheckedFilter = (Id)=>{
     return result
 }
 
-//Altera a visualização do modal dos filtros entre abrir e fechar
-function viewModal(modalId){
-    const modal = getElementById(modalId)
-    let arrowList = Array.from(document.getElementsByClassName('arrow__icon'))
-    let arrow = arrowList.find( element => {if(element.getAttribute('key') === modalId) return element})
-    if((modal.classList).contains('open')){
-        modal.classList.remove('open')
-        arrow.classList.remove('open')
-    } else {
-        modal.classList.add('open')
-        arrow.classList.add('open')
-    }
-}
 
-//Renderiza os cards
-const renderCard = (element, target) => {
-    const card = buildCard(element)
-    //Adiciona cada resultado com a estrutura HTML montada a página
-    target.appendChild(card)
-}
 
-//Remove o que está renderizado
-const clearRender = (element) => {
-    while(element.hasChildNodes()) {
-        element.removeChild(element.firstChild)
-    }
-}
+
+
 
 //Renderização dos pokemons em interação com a página
 const render = (SearchID, FilterId) => {
