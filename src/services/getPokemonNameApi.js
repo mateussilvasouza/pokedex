@@ -1,4 +1,4 @@
-const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=154&offset=0' // Total de Pokemons disponíveis 1154
+const urlName = 'https://pokeapi.co/api/v2/pokemon?limit=905&offset=0' // Total de Pokemons disponíveis 1154
 const urlType = 'https://pokeapi.co/api/v2/type/'
 const urlRegion = 'https://pokeapi.co/api/v2/region/'
 const pokemon = []
