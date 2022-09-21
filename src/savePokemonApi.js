@@ -10,10 +10,20 @@ const body = document.getElementsByTagName('body')[0]
 const darkmode = document.getElementById('dark_mode')
 //const body = document.getElementsByTagName('body')[0]
 darkmode.addEventListener('click', ()=>{
+    const stats = Array.from(document.getElementsByClassName('stats'))
+    const stats_text = document.getElementsByClassName('stats_text')
     if(body.style.backgroundColor == 'rgb(255, 255, 255)'){
         body.style.backgroundColor = 'rgb(0, 0, 0)';
+        body.style.color = 'rgb(255, 255, 255)';
+        stats.forEach(stats => {
+            stats.style.borderColor = 'rgb(255, 255, 255)'
+        })
     } else {
         body.style.backgroundColor = 'rgb(255, 255, 255)'
+        body.style.color = 'rgb(0, 0, 0)'
+        stats.forEach(stats => {
+            stats.style.borderColor = 'rgb(0, 0, 0)'
+        })
     }
 })
 /**Funções construtoras globais */
