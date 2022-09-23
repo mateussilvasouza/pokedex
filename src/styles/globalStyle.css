@@ -1,6 +1,8 @@
 body{
     font-family: Karla, "Source Sans Pro", sans-serif;
     background: 000000;
+    overflow: hidden;
+    scrollbar-width: 0;
 }
 
 ul{
@@ -28,6 +30,11 @@ ul{
     margin: 100px auto 0;
     flex-direction: column;
     overflow: auto;
+}
+
+.conteudo__results{
+    max-height: 60vh;
+    overflow-y: scroll;
 }
 
 .conteudo__search > * {
@@ -279,3 +286,31 @@ ul{
 }
 
 /*Footer Fim*/
+
+.modal__pokemon{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.5);
+}
+
+.modal__pokemon > *{
+    opacity: 1;
+}
+
+.modal__pokemon__card{
+    max-width: 800px;
+    max-height: 371px;
+    width: 800px;
+    height: 371px;
+    background: #F76545;
+}

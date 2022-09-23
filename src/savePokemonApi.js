@@ -15,14 +15,14 @@ darkmode.addEventListener('click', ()=>{
     if(body.style.backgroundColor == 'rgb(255, 255, 255)'){
         body.style.backgroundColor = 'rgb(0, 0, 0)';
         body.style.color = 'rgb(255, 255, 255)';
-        stats.forEach(stats => {
-            stats.style.borderColor = 'rgb(255, 255, 255)'
+        stats.forEach(stat => {
+            stat.style.setProperty('borderColor','#FFFFFF','important')
         })
     } else {
         body.style.backgroundColor = 'rgb(255, 255, 255)'
         body.style.color = 'rgb(0, 0, 0)'
-        stats.forEach(stats => {
-            stats.style.borderColor = 'rgb(0, 0, 0)'
+        stats.forEach(stat => {
+            stat.style.setProperty('borderColor','#000000','important')
         })
     }
 })
@@ -164,7 +164,8 @@ Promise.all(requests)
         response.forEach(response => {
             htmlResults.push(response)})})
     .then( () => {
-        htmlResults.forEach(response => renderCard(response, target))})
+        htmlResults.forEach(response => renderCard(response, target))
+    }).finally(()=>localStorage.setItem('ht',JSON.stringify(htmlResults)))
 
 
 //<------------- Fím ---------------->
