@@ -86,6 +86,7 @@ const setColorStyle = (typesElements, type) => {
 
 //Construi a estrutura dos cards
 export const buildCard = (response) => {
+   {const data = response}
     // CreateElements
     const card = createElement('div','class','card')
     card.setAttribute('key',`${response.name}`)
@@ -129,6 +130,7 @@ export const buildCard = (response) => {
     appendChild(card__image, img)
     appendChild(card, card__info)
     appendChild(card, card__image)
+    
 
     return card
 }

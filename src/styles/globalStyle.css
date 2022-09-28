@@ -1,6 +1,6 @@
 body{
     font-family: Karla, "Source Sans Pro", sans-serif;
-    background: 000000;
+    background: rgba(255, 255, 255);
     overflow: hidden;
     scrollbar-width: 0;
 }
@@ -308,9 +308,141 @@ ul{
 }
 
 .modal__pokemon__card{
+    position: relative;
     max-width: 800px;
     max-height: 371px;
     width: 800px;
     height: 371px;
     background: #F76545;
+    display: flex;
+}
+
+.modal__pokemon__card--img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    padding-right: 10px;
+}
+
+.modal__pokemon__card--img > .card__image > img{
+    width: 100% ;
+}
+.modal__pokemon__card--img > .card__types{
+    width: 40%;
+    align-self: flex-end;
+}
+
+.modal__pokemon__card--info{
+    flex-grow: 1;
+    padding: 20px;
+    background-image: linear-gradient(rgba(101, 1, 1,1),rgba(101,1,1,0.5));
+}
+
+.card--info{
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+}
+
+.card--info--cabecalho{
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    grid-area: 1 / 1 / span 1 / span 4;
+}
+
+.card--info--abilities{
+    padding: 1rem;
+    grid-area: 2 / 1 / span 1 / span 3;
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+.card--info--stats{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    grid-area: 3 / 1 / span 1/ span 4;
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+.info--cabecalho{
+    line-height: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.info--cabecalho> p:nth-of-type(2){
+    position: relative;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    color: #000000;
+    text-align: center;
+    background-color: yellow;
+    border-radius: 100%;
+
+}
+
+.info--stats{
+    width: 100%;
+    position: relative;
+}
+
+.info--stats:nth-of-type(1)::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid green;
+}
+
+.info--stats:nth-of-type(2)::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid yellow;
+}
+
+.info--stats:nth-of-type(2){
+    margin-left: 5rem;
+}
+
+.card--info--base--stats{
+    display: flex;
+    justify-content: space-evenly;
+    grid-area: 4 / 1 / span 1/ span 4;
+}
+
+.card--info--base--stats > div{
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+
+.info--cabecalho{
+    display: flex;   
+}
+
+
+
+.close__button{
+    position: absolute;
+    top: -3rem;
+    right: 0;
 }

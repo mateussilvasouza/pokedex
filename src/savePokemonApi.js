@@ -8,22 +8,27 @@ const myRegions = localStorage.getItem('regions').split(',')
 const body = document.getElementsByTagName('body')[0]
 //<--------------- Fím ----------------->
 const darkmode = document.getElementById('dark_mode')
+let isDarkModeActive = false
 //const body = document.getElementsByTagName('body')[0]
 darkmode.addEventListener('click', ()=>{
-    const stats = Array.from(document.getElementsByClassName('stats'))
-    const stats_text = document.getElementsByClassName('stats_text')
-    if(body.style.backgroundColor == 'rgb(255, 255, 255)'){
+    // const stats = Array.from(document.getElementsByClassName('stats'))
+    // const stats_text = document.getElementsByClassName('stats_text')
+    if(!isDarkModeActive){
         body.style.backgroundColor = 'rgb(0, 0, 0)';
         body.style.color = 'rgb(255, 255, 255)';
-        stats.forEach(stat => {
-            stat.style.setProperty('borderColor','#FFFFFF','important')
+        Array.from(document.getElementsByClassName('stats')).forEach(stat => {
+            stat.style.border = '3px solid #fff'
         })
+        console.log("SET DARK")
+        isDarkModeActive = true
     } else {
         body.style.backgroundColor = 'rgb(255, 255, 255)'
         body.style.color = 'rgb(0, 0, 0)'
-        stats.forEach(stat => {
-            stat.style.setProperty('borderColor','#000000','important')
+        Array.from(document.getElementsByClassName('stats')).forEach(stat => {
+            stat.style.border = '3px solid #fff'
         })
+        console.log("SET LIGHT")
+        isDarkModeActive = false
     }
 })
 /**Funções construtoras globais */
@@ -165,7 +170,12 @@ Promise.all(requests)
             htmlResults.push(response)})})
     .then( () => {
         htmlResults.forEach(response => renderCard(response, target))
-    }).finally(()=>localStorage.setItem('ht',JSON.stringify(htmlResults)))
+    })
 
 
 //<------------- Fím ---------------->
+const closeBtn = getElementById('closeBtn')
+closeBtn.addEventListener('click',()=>{
+    const modal = getElementById('view')
+    modal.style.display = 'none'
+})

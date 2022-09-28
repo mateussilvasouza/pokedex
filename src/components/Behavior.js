@@ -2,7 +2,7 @@ import { buildCard } from "./Constructors.js"
 
 //Altera a visualização do modal dos filtros entre abrir e fechar
 export function viewModal(modalId){
-    const modal = getElementById(modalId)
+    const modal = document.getElementById(modalId)
     let arrowList = Array.from(document.getElementsByClassName('arrow__icon'))
     let arrow = arrowList.find( element => {if(element.getAttribute('key') === modalId) return element})
     if((modal.classList).contains('open')){
