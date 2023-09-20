@@ -287,59 +287,6 @@ ul{
 
 /*Footer Fim*/
 
-.modal__pokemon{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 100;
-
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0,0,0,0.5);
-}
-
-.modal__pokemon > *{
-    opacity: 1;
-}
-
-.modal__pokemon__card{
-    position: relative;
-    max-width: 800px;
-    max-height: 371px;
-    width: 800px;
-    height: 371px;
-    background: #F76545;
-    display: flex;
-}
-
-.modal__pokemon__card--img{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-    padding-right: 10px;
-}
-
-.modal__pokemon__card--img > .card__image > img{
-    width: 100% ;
-}
-.modal__pokemon__card--img > .card__types{
-    width: 40%;
-    align-self: flex-end;
-}
-
-.modal__pokemon__card--info{
-    flex-grow: 1;
-    padding: 20px;
-    background-image: linear-gradient(rgba(101, 1, 1,1),rgba(101,1,1,0.5));
-}
-
 .card--info{
     margin-top: 10px;
     width: 100%;
