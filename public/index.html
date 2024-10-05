@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="../src/styles/reset.css">
-    <link rel="stylesheet" href="../src/styles/globalStyle.css">
-    <link rel="stylesheet" href="../src/styles/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/globalStyle.css">
     <title>Pokédex</title>
-    <script src="../src/services/getPokemonNameApi.js"></script>
+    <script src="./services/getPokemonNameApi.js"></script>
 </head>
 <body>   
     <header>    
         <div class="cabecalho">
-            <img src="../src/assets/Logo.png" alt="Logotipo de Pokémon" class="cabecalho__logo">
+            <img src="./assets/Logo.png" alt="Logotipo de Pokémon" class="cabecalho__logo">
             <nav class="cabecalho__nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -35,7 +35,7 @@
                     <div class="modal__content">
                         <div class="modal__button">
                             <button id="type">Tipo</button>
-                            <img key="modalType" class='arrow__icon' src="../src/assets/arrow.png" alt="Seta">
+                            <img key="modalType" class='arrow__icon' src="./assets/arrow.png" alt="Seta">
                         </div>
                         <ul id="modalType"class="modalFilter"></ul>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="modal__content">
                         <label class="modal__button">
                             <button id="region">Região</button>
-                            <img key="modalRegion" class='arrow__icon' src="../src/assets/arrow.png" alt="Seta">
+                            <img key="modalRegion" class='arrow__icon' src="./assets/arrow.png" alt="Seta">
                         </label>
                         <ul id="modalRegion"class="modalFilter"></ul>
                     </div>
@@ -54,7 +54,7 @@
         <section id="render" class="conteudo__results">
             
         </section>
-        <script type="module" src="../src/savePokemonApi.js" defer></script>
+        <script type="module" src="./services/savePokemonApi.js" defer></script>
     </main>
 
     <footer class="footer">

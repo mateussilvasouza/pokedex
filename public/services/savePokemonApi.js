@@ -1,5 +1,5 @@
-import { createElement, innerHTML } from "./components/Constructors.js"
-import { clearRender, renderCard, viewModal } from "./components/Behavior.js"
+import { createElement, innerHTML } from "../components/Constructors.js"
+import { clearRender, renderCard, viewModal } from "../components/Behavior.js"
 /**Declaração de variáveis*/
 //<------------- Início ---------------->
 const myPokemon = JSON.parse(localStorage.getItem('pokemon').split(','))
