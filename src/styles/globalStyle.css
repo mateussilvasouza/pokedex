@@ -62,10 +62,6 @@ ul{
     box-shadow: 5px 10px 16px #CCCCCC;
 }
 
-/* input[type="search"].search{
-
-} */
-
 .search__filter{
     width: 30vw;
     align-self: flex-start;

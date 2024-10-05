@@ -7,30 +7,7 @@ const myTypes = localStorage.getItem('types').split(',')
 const myRegions = localStorage.getItem('regions').split(',')
 const body = document.getElementsByTagName('body')[0]
 //<--------------- Fím ----------------->
-const darkmode = document.getElementById('dark_mode')
-let isDarkModeActive = false
-//const body = document.getElementsByTagName('body')[0]
-darkmode.addEventListener('click', ()=>{
-    // const stats = Array.from(document.getElementsByClassName('stats'))
-    // const stats_text = document.getElementsByClassName('stats_text')
-    if(!isDarkModeActive){
-        body.style.backgroundColor = 'rgb(0, 0, 0)';
-        body.style.color = 'rgb(255, 255, 255)';
-        Array.from(document.getElementsByClassName('stats')).forEach(stat => {
-            stat.style.border = '3px solid #fff'
-        })
-        console.log("SET DARK")
-        isDarkModeActive = true
-    } else {
-        body.style.backgroundColor = 'rgb(255, 255, 255)'
-        body.style.color = 'rgb(0, 0, 0)'
-        Array.from(document.getElementsByClassName('stats')).forEach(stat => {
-            stat.style.border = '3px solid #fff'
-        })
-        console.log("SET LIGHT")
-        isDarkModeActive = false
-    }
-})
+
 /**Funções construtoras globais */
 //<------------- Início ---------------->
 //Recebe o Id do elemento na página e retorna o html
@@ -88,11 +65,6 @@ const getCheckedFilter = (Id)=>{
     const result = checked.filter(li => {if(!!li) return li})
     return result
 }
-
-
-
-
-
 
 //Renderização dos pokemons em interação com a página
 const render = (SearchID, FilterId) => {
@@ -174,8 +146,3 @@ Promise.all(requests)
 
 
 //<------------- Fím ---------------->
-const closeBtn = getElementById('closeBtn')
-closeBtn.addEventListener('click',()=>{
-    const modal = getElementById('view')
-    modal.style.display = 'none'
-})
